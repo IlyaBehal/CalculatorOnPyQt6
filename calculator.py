@@ -14,6 +14,8 @@ from PyQt6.QtWidgets import (
 WINDOW_SIZE = 235
 DISPLAY_HEIGHT = 35
 BUTTON_SIZE = 40
+ERROR_MSG = "ERROR"
+
 
 class PyCalcWindow(QMainWindow):
     """PyCalc's main window (GUI or view)."""
@@ -66,6 +68,16 @@ class PyCalcWindow(QMainWindow):
         def clearDisplay(self):
             """Clear the display."""
             self.setDisplayText("")
+
+
+def evaluateExpression(expression):
+    """Evaluate an expression (Model)."""
+    try:
+        result = str(eval(expression, {}, {}))
+    except Exception:
+        result = ERROR_MSG
+    return result
+
 
 
 def main():
